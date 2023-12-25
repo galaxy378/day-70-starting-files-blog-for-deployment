@@ -15,7 +15,7 @@ import os
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
@@ -40,7 +40,7 @@ gravatar = Gravatar(app,
                     base_url=None)
 
 # CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('sqlite:///posts.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI", "sqlite:///posts.db")
 db = SQLAlchemy()
 db.init_app(app)
 
